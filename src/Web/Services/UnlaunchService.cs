@@ -4,7 +4,7 @@ namespace Microsoft.eShopWeb.Web.Services
 {
     public class UnlaunchService
     {
-        private const string FlagKey = "catalog_reverse";
+        private const string CatalogReverseFlag = "catalog_reverse";
 
         private readonly IUnlaunchClient _client;
 
@@ -13,9 +13,9 @@ namespace Microsoft.eShopWeb.Web.Services
             _client = client;
         }
 
-        public bool IsEnabled(string userIdentity)
+        public bool IsCatalogReverseFlagEnabled(string userIdentity)
         {
-            var variation = _client.GetVariation(FlagKey, userIdentity);
+            var variation = _client.GetVariation(CatalogReverseFlag, userIdentity);
             return variation == "on";
         }
     }
